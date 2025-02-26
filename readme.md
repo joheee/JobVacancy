@@ -2,6 +2,7 @@
 - build a career web
 - design looks like https://www.kingev.id/
 - deadline 28 March
+
 # Features
 - internship page
 - job vacancy page
