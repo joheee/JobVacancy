@@ -1,0 +1,115 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Parent Nav Container */
+.nav-parent-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding-bottom: 1rem 1rem 0 1rem;
+}
+
+/* Main Nav Bar */
+.nav-container {
+    width: 100%;
+    max-width: 1100px;
+    background: white;
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nav-upper-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.nav-link-container {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+/* Navigation Links */
+.nav-link-container a {
+    text-decoration: none;
+    color: black;
+    font-size: 1rem;
+    padding: 0.5rem 0;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-link-container a::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 2px;
+    background: black;
+    transition: width 0.3s ease-in-out;
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+}
+
+.nav-link-container a:hover::after {
+    width: 100%;
+}
+
+/* Search Bar Section */
+.nav-action-container {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding: 0.75rem;
+    width: 100vw;
+    min-height: 8rem;
+}
+
+/* Search Input */
+.search-input {
+    flex: 1;
+    padding: 0.7rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 400px;
+}
+
+.search-input:focus {
+    border-color: black;
+}
+
+/* Search Button */
+.search-button {
+    background: black;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.search-button:hover {
+    background: #333;
+}

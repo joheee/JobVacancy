@@ -4,10 +4,10 @@
 - deadline 28 March
 
 # Features
-- internship page
-- job vacancy page
-- search job vacancy
-- login user
+- [] internship page
+- [] job vacancy page
+- [] search job vacancy
+- [] login user
 
 # Advance Features
 - login admin
