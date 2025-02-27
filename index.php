@@ -1,3 +1,4 @@
-<link rel="stylesheet" href="style/job.css">
-
-<?php include 'view/job.php'; ?>
+<?php
+header("Location: view/job.php");
+exit(); 
+?>
