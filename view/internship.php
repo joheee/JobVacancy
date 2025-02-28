@@ -47,7 +47,7 @@ $internships = $internship->getAllInternships();
                     <span class="duration"><?= htmlspecialchars($internship["duration"]); ?> months</span>
                     <div class="job-footer">
                         <span class="salary">IDR <?= number_format($internship["salary"], 0, ',', '.'); ?></span>
-                        <button class="apply-button">Apply Now</button>
+                        <a href="internship_detail.php?id=<?= $internship['id']; ?>" class="apply-button">Apply Now</a>
                     </div>
                 </div>
             <?php endforeach; ?>

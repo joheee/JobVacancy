@@ -1,7 +1,14 @@
 <?php
 require_once __DIR__ . '../../model/job.php';
 $job = new Job();
-$jobs = $job->getAllJobs(); 
+
+$searchKeyword = isset($_GET['search']) ? trim($_GET['search']) : '';
+
+if ($searchKeyword) {
+    $jobs = $job->searchJobs($searchKeyword);
+} else {
+    $jobs = $job->getAllJobs();
+}
 ?>
 
 <!DOCTYPE html>
@@ -11,6 +18,14 @@ $jobs = $job->getAllJobs();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style/job.css">
     <title>Job | Job Vacancy</title>
+    <script>
+        // Clear search when page is refreshed
+        window.onload = function () {
+            if (performance.navigation.type === 1) {
+                window.location.href = "job.php"; // Redirect to clear search params
+            }
+        };
+    </script>
 </head>
 <body>
 
@@ -28,10 +43,10 @@ $jobs = $job->getAllJobs();
         </nav>
 
         <!-- Search Bar -->
-        <nav class="nav-action-container">
-            <input type="text" class="search-input" placeholder="Search for jobs...">
-            <button class="search-button">Search</button>
-        </nav>
+        <form class="nav-action-container" method="GET" action="job.php">
+            <input type="text" name="search" class="search-input" placeholder="Search for jobs..." value="<?= htmlspecialchars($searchKeyword); ?>">
+            <button type="submit" class="search-button">Search</button>
+        </form>
     </nav>
 
     <!-- Job Listings Section -->
@@ -52,12 +67,12 @@ $jobs = $job->getAllJobs();
                     </p>
                     <div class="job-footer">
                         <span class="salary">IDR <?= number_format($job["salary"], 0, ',', '.'); ?></span>
-                        <button class="apply-button">Apply Now</button>
+                        <a href="job_detail.php?id=<?= $job['id']; ?>" class="apply-button">Apply Now</a>
                     </div>
                 </div>
             <?php endforeach; ?>
         <?php else: ?>
-            <p>No job listings available.</p>
+            <p>No job listings found for "<strong><?= htmlspecialchars($searchKeyword); ?></strong>".</p>
         <?php endif; ?>
 
     </section>
