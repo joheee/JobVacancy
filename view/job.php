@@ -1,3 +1,9 @@
+<?php
+require_once __DIR__ . '../../model/job.php';
+$job = new Job();
+$jobs = $job->getAllJobs(); 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +19,7 @@
         <nav class="nav-container">
             <div class="nav-upper-container">
                 <div>Job Vacancy</div>
-                <div>Login</div>
+                <div></div>
             </div>
             <div class="nav-link-container">
                 <a href="/view/job.php">Job</a>
@@ -32,35 +38,27 @@
     <section class="job-listings">
         <h2>Available Jobs</h2>
 
-        <!-- Job Card -->
-        <div class="job-card">
-            <div class="job-header">
-                <div class="job-info">
-                    <h3>Software Engineer</h3>
-                    <p>Google - San Francisco, CA</p>
+        <?php if (!empty($jobs)): ?>
+            <?php foreach ($jobs as $job): ?>
+                <div class="job-card">
+                    <div class="job-header">
+                        <div class="job-info">
+                            <h3><?= htmlspecialchars($job["title"]); ?></h3>
+                            <p><?= htmlspecialchars($job["location"]); ?></p>
+                        </div>
+                    </div>
+                    <p class="job-description">
+                        <?= htmlspecialchars(substr($job["description"], 0, 200)); ?>...
+                    </p>
+                    <div class="job-footer">
+                        <span class="salary">IDR <?= number_format($job["salary"], 0, ',', '.'); ?></span>
+                        <button class="apply-button">Apply Now</button>
+                    </div>
                 </div>
-            </div>
-            <p class="job-description">We are looking for a Software Engineer with experience in building high-performance web applications.</p>
-            <div class="job-footer">
-                <span class="salary">$120,000 - $150,000/year</span>
-                <button class="apply-button">Apply Now</button>
-            </div>
-        </div>
-
-        <!-- Another Job Card -->
-        <div class="job-card">
-            <div class="job-header">
-                <div class="job-info">
-                    <h3>UI/UX Designer</h3>
-                    <p>Facebook - New York, NY</p>
-                </div>
-            </div>
-            <p class="job-description">Looking for a UI/UX designer to create engaging user experiences for mobile and web platforms.</p>
-            <div class="job-footer">
-                <span class="salary">$90,000 - $110,000/year</span>
-                <button class="apply-button">Apply Now</button>
-            </div>
-        </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p>No job listings available.</p>
+        <?php endif; ?>
 
     </section>
 

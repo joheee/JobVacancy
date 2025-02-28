@@ -1,3 +1,9 @@
+<?php
+require_once __DIR__ . '../../model/internship.php';
+$internship = new Internship();
+$internships = $internship->getAllInternships(); 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +19,7 @@
         <nav class="nav-container">
             <div class="nav-upper-container">
                 <div>Job Vacancy</div>
-                <div>Login</div>
+                <div></div>
             </div>
             <div class="nav-link-container">
                 <a href="/view/job.php">Job</a>
@@ -22,39 +28,32 @@
         </nav>
     </nav>
 
-    <!-- Job Listings Section -->
+    <!-- Internship Listings Section -->
     <section class="job-listings">
-        <h2>Available Internship</h2>
+        <h2>Available Internships</h2>
 
-        <!-- Job Card -->
-        <div class="job-card">
-            <div class="job-header">
-                <div class="job-info">
-                    <h3>Software Engineer</h3>
-                    <p>Google - San Francisco, CA</p>
+        <?php if (!empty($internships)): ?>
+            <?php foreach ($internships as $internship): ?>
+                <div class="job-card">
+                    <div class="job-header">
+                        <div class="job-info">
+                            <h3><?= htmlspecialchars($internship["title"]); ?></h3>
+                            <p><?= htmlspecialchars($internship["location"]); ?></p>
+                        </div>
+                    </div>
+                    <p class="job-description">
+                        <?= htmlspecialchars(substr($internship["description"], 0, 100)); ?>...
+                    </p>
+                    <span class="duration"><?= htmlspecialchars($internship["duration"]); ?> months</span>
+                    <div class="job-footer">
+                        <span class="salary">IDR <?= number_format($internship["salary"], 0, ',', '.'); ?></span>
+                        <button class="apply-button">Apply Now</button>
+                    </div>
                 </div>
-            </div>
-            <p class="job-description">We are looking for a Software Engineer with experience in building high-performance web applications.</p>
-            <div class="job-footer">
-                <span class="salary">$120,000 - $150,000/year</span>
-                <button class="apply-button">Apply Now</button>
-            </div>
-        </div>
-
-        <!-- Another Job Card -->
-        <div class="job-card">
-            <div class="job-header">
-                <div class="job-info">
-                    <h3>UI/UX Designer</h3>
-                    <p>Facebook - New York, NY</p>
-                </div>
-            </div>
-            <p class="job-description">Looking for a UI/UX designer to create engaging user experiences for mobile and web platforms.</p>
-            <div class="job-footer">
-                <span class="salary">$90,000 - $110,000/year</span>
-                <button class="apply-button">Apply Now</button>
-            </div>
-        </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p>No internship listings available.</p>
+        <?php endif; ?>
 
     </section>
 
