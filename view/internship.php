@@ -59,5 +59,17 @@ $internships = $internship->getAllInternships();
 
     </section>
 
+    <!-- Footer Section -->
+    <footer class="footer-container">
+        <div class="footer-content">
+            <p>&copy; <?= date('Y'); ?> Job Vacancy. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact Us</a>
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>

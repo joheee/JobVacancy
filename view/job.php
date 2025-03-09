@@ -35,7 +35,7 @@ if ($searchKeyword) {
             <div class="nav-upper-container">
                 <div>Job Vacancy</div>
                 <a href="/view/profile.php">
-                    <img class="nav-profile-container" src="https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg" alt="">
+                    <img class="nav-profile-container" src="https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg" alt="Profile">
                 </a>
             </div>
             <div class="nav-link-container">
@@ -78,6 +78,18 @@ if ($searchKeyword) {
         <?php endif; ?>
 
     </section>
+
+    <!-- Footer Section -->
+    <footer class="footer-container">
+        <div class="footer-content">
+            <p>&copy; <?= date('Y'); ?> Job Vacancy. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact Us</a>
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>
